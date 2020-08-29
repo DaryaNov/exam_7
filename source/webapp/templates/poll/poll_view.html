@@ -2,15 +2,18 @@
 
 {% block title %}View{% endblock %}
 {% block menu %}
-{#    <li><a href="{% url 'article_create' project.pk %}">Add Task</a></li>#}
+     <li><a href="{% url 'poll_update' poll.pk %}">Update Poll</a></li>
+    <li><a href="{% url 'poll_delete' poll.pk %}">Delete Poll</a></li>
 {% endblock %}
 {% block content %}
      <h1>Polls:</h1>
     <h2>{{ poll.question }}</h2>
     <p>New date:{{ poll.created_at}}</p>
-        <h3>Choice:</h3>
-        {% for choice in choices %}
-                <h4>{{ choice.text }}</h4>
-        {% endfor %}
-<p><a href="{% url 'poll_update' poll.pk %}">Update</a> ~ <a href="{% url 'poll_delete' poll.pk %}">Delete</a></p>
+    <h3>Choice:</h3>
+    {% for p in poll.choices.all%}
+        <h4>{{ p.text }}</h4>
+        <hr>
+        <p><a href="{% url 'choice_update' p.pk %}">Update choice</a> ~ <a href="{% url 'choice_delete' p.pk %}">Delete choice</a></p>
+    {% endfor %}
+    <a href="{% url 'choice_create' poll.pk %}">Add Choice</a>
 {% endblock %}

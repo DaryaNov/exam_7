@@ -14,7 +14,13 @@ class PollForm(forms.ModelForm):
 
 
 
-class ChoceForm(forms.ModelForm):
+class ChoiceForm(forms.ModelForm):
     class Meta:
         model = Choice
         fields = ['text']
+
+
+
+
+class SimpleSearchForm(forms.Form):
+    search = forms.CharField(max_length=100, required=False, label="Найти")

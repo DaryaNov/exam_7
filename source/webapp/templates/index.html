@@ -9,6 +9,7 @@
     {% for poll in polls %}
         <div class="linegr">
             <h3><a href="{% url "poll_view" poll.pk %}">{{ poll.question }}</a></h3>
+            <a href="{% url "index_answer" poll.pk %}">Пройти тест</a>
         </div>
     {% endfor %}
     {% if is_paginated %}
