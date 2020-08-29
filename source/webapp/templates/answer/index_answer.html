@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Answer{% endblock %}
+{% block content %}
+     <h1>Poll</h1>
+   <h1>{{ poll.question }}</h1>
+
+    <form method="POST">
+   {% csrf_token %}
+        {% for choice in choices %}
+            <input type="radio" value="{{ choice.pk }}" id="{{ choice.pk }}" name="answer_сhoice"> {{ choice }}<hr/>
+        {% endfor %}
+        <input type="submit" value="Select" class="btn btn-primary">
+   </form>
+{% endblock %}
+
+{#<h1>Polls:</h1>#}
+{#    <h2>{{ poll.question }}</h2>#}
+{#    <h3>Choice:</h3>#}
+{#    {% for p in poll.choices.all%}#}
+{#        <h4>{{ p.text }}</h4>#}
+{#        <hr>#}
+{#        <p><a href="{% url 'choice_update' p.pk %}">Update choice</a> ~ <a href="{% url 'choice_delete' p.pk %}">Delete choice</a></p>#}
+{#    {% endfor %}#}
+{#    <a href="{% url 'choice_create' poll.pk %}">Add Choice</a>#}
