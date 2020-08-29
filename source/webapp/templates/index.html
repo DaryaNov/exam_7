@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Hello{% endblock %}
+
+{% block content %}
+    <h1>My First Blog!</h1>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    {% for poll in polls %}
+        <div class="linegr">
+            <h3><a href="{% url "poll_view" poll.pk %}">{{ poll.question }}</a></h3>
+        </div>
+    {% endfor %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}

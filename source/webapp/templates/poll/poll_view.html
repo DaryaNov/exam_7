@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}View{% endblock %}
+{% block menu %}
+{#    <li><a href="{% url 'article_create' project.pk %}">Add Task</a></li>#}
+{% endblock %}
+{% block content %}
+     <h1>Polls:</h1>
+    <h2>{{ poll.question }}</h2>
+    <p>New date:{{ poll.created_at}}</p>
+        <h3>Choice:</h3>
+        {% for choice in choices %}
+                <h4>{{ choice.text }}</h4>
+        {% endfor %}
+<p><a href="{% url 'poll_update' poll.pk %}">Update</a> ~ <a href="{% url 'poll_delete' poll.pk %}">Delete</a></p>
+{% endblock %}
